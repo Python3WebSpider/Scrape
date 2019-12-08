@@ -2,6 +2,7 @@
   <el-row>
     <el-col :span="8" :offset="8">
       <el-form :model="form" label-width="80px">
+        <h2>JavaScript Hook</h2>
         <el-form-item label="Username">
           <el-input v-model="form.username"></el-input>
         </el-form-item>
@@ -43,5 +44,12 @@
 </script>
 
 <style scoped>
+  form {
+    margin-top: 100px;
+  }
 
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
 </style>
