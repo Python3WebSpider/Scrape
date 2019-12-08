@@ -1,0 +1,41 @@
+name: build dist to master
+
+on: [push]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Build Source Code
+      run: |
+        npm run build
+      env:
+        CI: true
+    - name: Set SSH Environment
+      env:
+        DOCS_DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com > ~/.ssh/known_hosts
+        chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
+        git config --global user.email "cqc@cuiqingcai.com"
+        git config --global user.name "Germey"
+    - name: Push to Master
+      run: |
+        pwd
+        cd dist
+        git init
+        git add -A
+        git commit -m "production code"
+        git remote add origin git@github.com:Python3WebSpider/CrackJS.git
+        git push origin master --force
