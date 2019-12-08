@@ -1,4 +1,4 @@
-# mechine-writing-portal
+# Crack JavaScript Platform
 
 ## Project setup
 ```
