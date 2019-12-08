@@ -23,7 +23,7 @@ jobs:
         CI: true
     - name: Set SSH Environment
       env:
-        DOCS_DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
       run: |
         mkdir -p ~/.ssh/
         echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
@@ -34,7 +34,6 @@ jobs:
         git config --global user.name "Germey"
     - name: Push to Master
       run: |
-        pwd
         cd dist
         git init
         git add -A
