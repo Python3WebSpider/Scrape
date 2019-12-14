@@ -7,7 +7,7 @@
           <el-input v-model="form.username"></el-input>
         </el-form-item>
         <el-form-item label="Password">
-          <el-input v-model="form.password"></el-input>
+          <el-input v-model="form.password" type="password"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="onSubmit">Submit</el-button>
@@ -19,6 +19,8 @@
 
 <script>
   import store from '../store'
+
+  let Base64 = require('js-base64').Base64
 
   export default {
     name: "Login1",
@@ -32,7 +34,7 @@
     },
     methods: {
       onSubmit() {
-        let token = JSON.stringify(this.form)
+        let token = Base64.encode(JSON.stringify(this.form))
         this.$http.post(store.state.url.root, {
           token: token
         }).then((data) => {
