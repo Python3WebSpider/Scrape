@@ -35,7 +35,8 @@ jobs:
     - name: Push to Master
       run: |
         cd dist
-        echo "crack.cuiqingcai.com" > CNAME
+        cp index.html 404.html
+        echo "scrape.cuiqingcai.com" > CNAME
         git init
         git add -A
         git commit -m "production code"

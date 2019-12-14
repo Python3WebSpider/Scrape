@@ -8,13 +8,12 @@ Router.prototype.push = function push(location) {
 }
 
 const router = new Router({
-  // mode: 'history',
+  mode: 'history',
   routes: [
     {
-      path: '/',
-      component: () => import('./views/Step1')
+      path: '/login1',
+      component: () => import('./views/Login1')
     },
-
   ]
 })
 

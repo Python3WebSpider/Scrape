@@ -2,7 +2,7 @@
   <el-row>
     <el-col :span="8" :offset="8">
       <el-form :model="form" label-width="80px">
-        <h2>JavaScript Hook</h2>
+        <h2>Login 1</h2>
         <el-form-item label="Username">
           <el-input v-model="form.username"></el-input>
         </el-form-item>
@@ -21,7 +21,7 @@
   import store from '../store'
 
   export default {
-    name: "Step1",
+    name: "Login1",
     data() {
       return {
         form: {
