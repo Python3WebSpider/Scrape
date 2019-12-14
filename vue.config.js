@@ -1,3 +1,4 @@
 module.exports = {
-  devServer: {}
+  devServer: {},
+  productionSourceMap: false
 }
